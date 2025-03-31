@@ -1,0 +1,3 @@
+class Miljøplastflaske extends Plastflaske{
+    
+}

@@ -1,0 +1,1 @@
+class Plastflaske extends Flaske implements Pant {}

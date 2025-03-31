@@ -1,7 +1,7 @@
 public class Parkeringsplass<E> {
     private E peker;
     public E parker(E kjøretøy) {
-        peker = kjøretøy;
+        this.peker = kjøretøy;
         return kjøretøy;
     }
     public E kjøreUt() {
