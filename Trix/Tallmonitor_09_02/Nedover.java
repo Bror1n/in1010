@@ -9,8 +9,9 @@ public class Nedover implements Runnable{
 
     @Override
     public void run(){
-        while (this.tallmonitor.invariant()){
-            
+        while (this.tallmonitor.settStørste(value-1)){
+            value--;
         }
+        System.out.println("Nedover stopped at value " + Integer.toString(value-1));
     }
 }
