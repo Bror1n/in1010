@@ -43,4 +43,8 @@ public class Subsekvensregister {
         }
         return f;
     }
+
+    public void makeFile(String filnavn){
+        register.get(0).skrivTilFil(filnavn);
+    }
 }
