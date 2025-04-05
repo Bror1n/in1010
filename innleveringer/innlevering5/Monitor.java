@@ -16,7 +16,7 @@ public class Monitor {
 
     public void settInn(Frekvenstabell f){
         subregister.settInn(f);
-        merEnnTo.signalAll();
+        //merEnnTo.signalAll(); Siden vi ikke bruker await lenger i nye metoden kan vi ikke ha at denne sender singalAll
     }
 
     public Frekvenstabell taUt(){

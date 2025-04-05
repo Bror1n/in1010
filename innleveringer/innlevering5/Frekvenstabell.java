@@ -35,7 +35,7 @@ class Frekvenstabell extends TreeMap<String, Integer> {
     public void skrivTilFil(String filnavn) {
         try (FileWriter writer = new FileWriter(filnavn)){
             for (String key : this.keySet()){
-                writer.append(key+","+Integer.toString(this.get(key)));
+                writer.append(key+","+Integer.toString(this.get(key))+"\n");
             }
         }
         catch(IOException e) {

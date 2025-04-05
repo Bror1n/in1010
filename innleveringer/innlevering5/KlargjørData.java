@@ -19,18 +19,20 @@ public class KlargjørData {
         try {
             Scanner scanner = new Scanner(new File(mappe+"metadata.csv"));
             ArrayList<Thread> trådliste = new ArrayList<Thread>();
+            int i = 0;
             while (scanner.hasNextLine()){
+                System.out.println("Starter lesetråd"+Integer.toString(i++));
                 String string = scanner.nextLine();
                 String[] values = string.split(",");
                 
                 if (Boolean.valueOf(values[1])){
-                    Lesetråd lesetråd = new Lesetråd(smittetMonitor, values[0]);
+                    Lesetråd lesetråd = new Lesetråd(smittetMonitor, mappe+values[0]);
                     Thread trådlese = new Thread(lesetråd);
                     trådlese.start(); 
                     trådliste.add(trådlese);
                 }
                 else {
-                    Lesetråd lesetråd = new Lesetråd(friskMonitor, values[0]);
+                    Lesetråd lesetråd = new Lesetråd(friskMonitor, mappe+values[0]);
                     Thread trådlese = new Thread(lesetråd);
                     trådlese.start();
                     trådliste.add(trådlese);
@@ -73,8 +75,10 @@ public class KlargjørData {
         KlargjørData hoved = new KlargjørData();
 
         String filnavn = args[0];
+        System.out.println("filnavn er " + filnavn);
         File fil = new File(filnavn);
         String mappe = fil.getParent() + "/";
+        System.out.println("Mappen er "+mappe);
 
         Monitor smittetMonitor = new Monitor();
         Monitor friskMonitor = new Monitor();
