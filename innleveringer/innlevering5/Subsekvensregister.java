@@ -31,7 +31,7 @@ public class Subsekvensregister {
             while (scanner.hasNextLine()){
                 String line = scanner.nextLine();
                 int j = 0;
-                for (int i=Subsekvensregister;i<line.length();i++){
+                for (int i=Subsekvensregister;i<line.length()+1;i++){
                     f.put(line.substring(j, i),1);
                     j++;
                 }
