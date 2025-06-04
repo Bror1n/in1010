@@ -1,0 +1,78 @@
+class Bok {
+    private String tittel;
+
+    public Bok (String t) {
+        tittel = t;
+    }
+
+    public String toString() {
+        return tittel;
+    }
+}
+
+class Bokhylle {
+    private Bok[] boeker;
+
+    public Bokhylle (int antPlasser) {
+        boeker = new Bok[antPlasser];
+    }
+
+    //Forsoeker aa sette inn en bok paa foerste ledige plass i bokhyllen
+    public void settInn(Bok b) throws DuplikatException, IkkeMerPlassException{
+
+        for (int i = 0; i < boeker.length; i++) {
+            if (boeker[i].equals(b.toString())) {
+                throw new DuplikatException(b.toString());
+            }
+            if (boeker[i] == null) {
+
+                boeker[i] = b;
+                return;
+            }
+        }
+        throw new IkkeMerPlassException(b.toString());
+    }
+
+    public void skrivBoeker() {
+        for (Bok b: boeker) {
+            if (b != null) {
+                System.out.println(b);
+            }
+        }
+    }
+}
+
+public class DuplikatException extends Exception{
+    public DuplikatException(String id) {
+        super("Boken " + id + " Er et duplikat");
+    }
+}
+
+public class IkkeMerPlassException extends Exception {
+    public IkkeMerPlassException(String id) {
+        super("Boken " + id + " har ikke plass");
+    }
+}
+
+class TestBokhylle {
+
+    public static void main(String[] args) {
+
+        Bokhylle bokhylle = new Bokhylle(3);
+        System.out.println("Setter inn boeker:");
+
+        String[] titler = {"De doedes tjern", "Doppler", "Doppler", "Misery", "Gone with the Wind"};
+
+        for (int i = 0; i < titler.length; i++) {
+            try {
+                bokhylle.settInn(new Bok(titler[i]));
+            }
+            catch (Exception e) {
+                System.out.println("Programmet funker ikke");
+            }
+        }
+
+        System.out.println("\nSkriver ut boeker:");
+        bokhylle.skrivBoeker();
+    }
+}

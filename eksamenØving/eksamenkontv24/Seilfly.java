@@ -169,10 +169,9 @@ public class Konkurransegruppe implements Iterable<Seilfly>{
     public int[] histogram() {
         int[] outputHist = new int[99+1];
         for (Seilfly fly : this) {
-            int spenn = fly.HentGlidetall() {
-                if (spenn > 10 && spenn <= 99) {
-                    outputHist[fly.HentVingespenn()] = outputHist[fly.HentVingespenn()] + 1;
-                }
+            int spenn = fly.HentGlidetall();
+            if (spenn > 10 && spenn <= 99) {
+                outputHist[fly.HentVingespenn()] = outputHist[fly.HentVingespenn()] + 1;
             }
         }
         return outputHist;
